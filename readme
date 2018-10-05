@@ -1,0 +1,10 @@
+app.py:entrance
+
+init.py: initalize such as connect database
+!!change database name&pswd to yours
+
+models.py: class design-->database design
+
+core: index(welcome page) -->Home page
+Users: Login/Register
+photos: browse thumbnails of photos/upload/transformations...
