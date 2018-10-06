@@ -40,7 +40,7 @@ login_manager.login_view = "users.login"
 
 from photoblog.users.views import users
 from photoblog.core.views import core
-from photoblog.photos.update import photos
+from photoblog.photos.upload import photos
 
 app.register_blueprint(users)
 app.register_blueprint(core)

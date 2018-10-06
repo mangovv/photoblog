@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class = "jumbotron">
-        <h1>Welcome</h1>
-        <img src="../static/background.jpeg">
-        <a href= "{{ url_for('users.login')}}">Please Login</a>
+    <div>
+        <form id="upload-form" action="{{ url_for('photos.upload') }}" method="POST" enctype="multipart/form-data">
+            <input type ="file" name="file" accept="image/*" multiple>
+            <input type = "submit" value = "send">
+        </form>
     </div>
 {% endblock %}
