@@ -10,16 +10,16 @@ photos = Blueprint('photos',__name__)
 APP_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 destination = ""
 
-@photos.route('/test')
+@photos.route('/upload')
 def test():
     return render_template("upload.html")
 
-@photos.route('/upload',methods=["POST"])
+@photos.route('/test/FileUpload',methods=["POST"])
 def upload():
     target = os.path.join(APP_ROOT, "static\\")
     if not os.path.isdir(target):
         os.mkdir(target)
-    for new_file in request.files.getlist("file"):
+    for new_file in request.files.getlist("uploadedfile"):
         name, ext = new_file.filename.split('.')
         ext = '.' +ext
         filename0 = name+ext
@@ -34,8 +34,6 @@ def upload():
         with Image(file = new_file) as image:
             image.save(filename=destination0)
             transform_upload(destination0,destination1,destination2,destination3)
-
-
 
     return render_template("complete.html")
 
