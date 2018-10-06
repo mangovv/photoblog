@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c65f7ab-6cb9-4357-8241-4b180911827f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/photoblog/photos/upload.py" beforeDir="false" afterPath="$PROJECT_DIR$/photoblog/photos/upload.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photoblog/templates/display.html" beforeDir="false" afterPath="$PROJECT_DIR$/photoblog/templates/display.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photoblog/templates/upload.html" beforeDir="false" afterPath="$PROJECT_DIR$/photoblog/templates/upload.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,7 +12,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/ECE1779$app.coverage" NAME="app Coverage Results" MODIFIED="1538866191801" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ECE1779$app.coverage" NAME="app Coverage Results" MODIFIED="1538869430236" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/proj1$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1538670645758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/proj1$app.coverage" NAME="app Coverage Results" MODIFIED="1538771175394" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/proj1$Flask__models_py_.coverage" NAME="Flask (photoblog/models.py) Coverage Results" MODIFIED="1538687813290" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -92,16 +91,16 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="6" />
-          <entry key="html" value="37" />
-          <entry key="py" value="1033" />
-          <entry key="txt" value="20" />
+          <entry key="html" value="55" />
+          <entry key="py" value="1119" />
+          <entry key="txt" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="37" />
-          <entry key="PLAIN_TEXT" value="26" />
-          <entry key="Python" value="1033" />
+          <entry key="HTML" value="55" />
+          <entry key="PLAIN_TEXT" value="34" />
+          <entry key="Python" value="1119" />
         </counts>
       </usages-collector>
     </session>
@@ -111,10 +110,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/photoblog/photos/upload.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-475">
-              <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+            <state relative-caret-position="-350">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
               <folding>
-                <marker date="1538866123803" expanded="true" signature="1241:1739" ph="..." />
+                <element signature="e#0#62#0" expanded="true" />
+                <marker date="1538869413270" expanded="true" signature="1258:1869" ph="..." />
               </folding>
             </state>
           </provider>
@@ -123,8 +123,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/photoblog/templates/upload.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+            <state relative-caret-position="204">
+              <caret line="12" column="41" lean-forward="true" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -181,9 +181,9 @@
         <option value="$PROJECT_DIR$/readme" />
         <option value="$PROJECT_DIR$/photoblog/__init__.py" />
         <option value="$PROJECT_DIR$/photoblog/photos/update.py" />
-        <option value="$PROJECT_DIR$/photoblog/templates/upload.html" />
         <option value="$PROJECT_DIR$/photoblog/templates/display.html" />
         <option value="$PROJECT_DIR$/photoblog/photos/upload.py" />
+        <option value="$PROJECT_DIR$/photoblog/templates/upload.html" />
       </list>
     </option>
   </component>
@@ -194,9 +194,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="912" />
-    <option name="width" value="938" />
-    <option name="height" value="1088" />
+    <option name="x" value="426" />
+    <option name="y" value="400" />
+    <option name="width" value="1344" />
+    <option name="height" value="1039" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -392,19 +393,25 @@
       <option name="project" value="LOCAL" />
       <updated>1538792464167</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="10061851">
+      <created>1538866291620</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1538866291620</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="730" y="0" width="750" height="870" extended-state="0" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1487" height="878" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18352601" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.029391183" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.17073171" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21313673" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4963925" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -430,7 +437,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="10052056" />
-    <option name="LAST_COMMIT_MESSAGE" value="10052056" />
+    <MESSAGE value="10061851" />
+    <option name="LAST_COMMIT_MESSAGE" value="10061851" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/photoblog/static/background.jpeg">
@@ -565,17 +573,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/photoblog/templates/upload.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+        <state relative-caret-position="204">
+          <caret line="12" column="41" lean-forward="true" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/photoblog/photos/upload.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-475">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        <state relative-caret-position="-350">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
           <folding>
-            <marker date="1538866123803" expanded="true" signature="1241:1739" ph="..." />
+            <element signature="e#0#62#0" expanded="true" />
+            <marker date="1538869413270" expanded="true" signature="1258:1869" ph="..." />
           </folding>
         </state>
       </provider>
