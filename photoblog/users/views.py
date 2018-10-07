@@ -1,8 +1,10 @@
 from flask import render_template, url_for, flash, redirect, request, Blueprint
-from flask_login import login_user, current_user, logout_user, login_required
+from flask_login import login_user, current_user, logout_user, login_required, login_manager
 from photoblog import db
 from photoblog.models import User
 from photoblog.users.forms import LoginForm,RegistrationForm
+
+#from photoblog.models import load_user
 
 
 users = Blueprint('users', __name__)
@@ -45,3 +47,16 @@ def login():
 
             return redirect(url_for('core.welcome'))
     return render_template('login.html', title=title,form=form)
+
+@users.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return "Logged Out"
+
+
+
+@users.route('/test', methods=['GET', 'POST'])
+@login_required
+def test():
+    return 'test'

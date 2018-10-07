@@ -4,6 +4,9 @@ from wand.image import Image
 from wand.api import library
 from photoblog import db
 from photoblog.models import User, Photo
+
+from flask_login import login_user, current_user, logout_user, login_required
+
 import ctypes
 import datetime
 #add session
@@ -15,10 +18,12 @@ APP_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 destination = ""
 
 @photos.route('/upload')
+@login_required
 def test():
     return render_template("upload.html")
 
 @photos.route('/test/FileUpload',methods=["POST"])
+@login_required
 def upload():
     target = os.path.join(APP_ROOT, "static\\")
     if not os.path.isdir(target):

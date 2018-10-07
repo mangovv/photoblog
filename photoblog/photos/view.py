@@ -1,10 +1,12 @@
 from flask import render_template, request, session, redirect, url_for, escape, Blueprint
 from photoblog.models import Photo
 from photoblog import db
+from flask_login import login_user, current_user, logout_user, login_required, login_manager
 
 display = Blueprint('view',__name__)
 
 @display.route('/view')
+@login_required
 def view():
     username_session="Anthony"
     #query = Photo.query.filter_by(title = 'yellow')
