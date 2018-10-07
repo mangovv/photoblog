@@ -50,9 +50,9 @@ def upload():
         photo = Photo(user_id= 1,
                       #date=Column(DateTime, default=datetime.datetime.utcnow),
                       title = name,
-                      scale_down = destination1,
-                      enlarge = destination2,
-                      black_white = destination3
+                      scale_down = filename1,
+                      enlarge = filename2,
+                      black_white = filename3
                       )
         db.session.add(photo)
         db.session.commit()
