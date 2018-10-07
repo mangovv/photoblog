@@ -1,7 +1,11 @@
 from flask import render_template, request, Blueprint
+from sqlalchemy import Column, Integer, DateTime
 from wand.image import Image
 from wand.api import library
+from photoblog import db
+from photoblog.models import User, Photo
 import ctypes
+import datetime
 #add session
 
 import os
@@ -19,7 +23,15 @@ def upload():
     target = os.path.join(APP_ROOT, "static\\")
     if not os.path.isdir(target):
         os.mkdir(target)
+
+    if 'uploadedfile' not in request.files:
+        return "Uploaded file is missing in the form"
+
+    if not request.files.getlist("uploadedfile"):
+        return "File name is not provided"
+
     for new_file in request.files.getlist("uploadedfile"):
+
         name, ext = new_file.filename.split('.')
         ext = '.' +ext
         filename0 = name+ext
@@ -30,6 +42,20 @@ def upload():
         destination1 = target + filename1
         destination2 = target + filename2
         destination3 = target + filename3
+
+        user = User(email='email@email.com',
+                    username='Anthony',
+                    password='892034zty')
+
+        photo = Photo(user_id= 1,
+                      #date=Column(DateTime, default=datetime.datetime.utcnow),
+                      title = name,
+                      scale_down = destination1,
+                      enlarge = destination2,
+                      black_white = destination3
+                      )
+        db.session.add(photo)
+        db.session.commit()
 
         with Image(file = new_file) as image:
             image.save(filename=destination0)
@@ -48,7 +74,7 @@ def transform_upload(destination0, destination1, destination2, destination3):
 
     transformed1.resize(50,50)
     transformed2.type = 'grayscale'
-    transformed3.rotate(270)
+    #transformed3.rotate(270)
 
     threshold = transformed3.quantum_range * 0.8
     library.MagickSepiaToneImage(transformed3.wand, threshold)

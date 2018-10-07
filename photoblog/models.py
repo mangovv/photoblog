@@ -39,7 +39,7 @@ class Photo(db.Model):
     users = db.relationship(User)
 
     # Model for the Photos Store on the Website
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement= True)
     # Connect the Photo to a particular author
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -50,9 +50,12 @@ class Photo(db.Model):
     black_white = db.Column(db.String(200), nullable=False)
 
 
-    def __init__(self, title, user_id):
+    def __init__(self, title, user_id, scale_down, enlarge, black_white):
         self.title = title
         self.user_id = user_id
+        self.scale_down = scale_down
+        self.enlarge = enlarge
+        self.black_white = black_white
 
     def __repr__(self):
         return f"Post Id: {self.id} --- Date: {self.date} --- Title: {self.title}"
