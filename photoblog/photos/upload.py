@@ -89,5 +89,8 @@ def transform_upload(destination0, destination1, destination2, destination3):
     transformed3.save(filename= destination3)
 
 @photos.route('/display')
+@login_required
 def display():
-    return render_template('display.html', user_name='tianyue', image_list=[destination])
+    user_name = current_user.username
+    return user_name
+
