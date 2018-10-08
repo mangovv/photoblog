@@ -8,11 +8,11 @@
 </head>
 <body>
 <ul>
-    <li class="nav-item"><a class="nav-link" href="{{ url_for('users.index') }}">Home</a></li>
-    <li class="nav-link"><a href="{{ url_for('users.login') }}">Log In</a></li>
-    <li class="nav-link"><a href="{{ url_for('users.register') }}">Sign Up</a></li>
+    <li><a href="{{ url_for('users.index') }}">Home</a></li>
+    <li><a href="{{ url_for('users.login') }}">Log In</a></li>
+    <li><a href="{{ url_for('users.register') }}">Sign Up</a></li>
 </ul>
-<div class="container">
+<div>
     {% block content %}
 
     {% endblock %}

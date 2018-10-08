@@ -1,5 +1,4 @@
 from flask import render_template, request, Blueprint
-from sqlalchemy import Column, Integer, DateTime
 from wand.image import Image
 from wand.api import library
 from photoblog import db
@@ -8,9 +7,6 @@ from photoblog.models import User, Photo
 from flask_login import login_user, current_user, logout_user, login_required
 
 import ctypes
-import datetime
-#add session
-
 import os
 
 photos = Blueprint('photos',__name__)
