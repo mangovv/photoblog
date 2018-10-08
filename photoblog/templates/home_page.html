@@ -1,16 +1,69 @@
-{% extends 'base.html' %}
-{% block content %}
-    <div class="jumbotron">
-        <h1>This is the homepage</h1>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="./static/base.css">
+    <meta charset="utf-8">
+
+    <style>
+    div.gallery {
+        margin: 5px;
+        border: 1px solid #ccc;
+        float: left;
+        width: 180px;
+    }
+
+    div.gallery:hover {
+        border: 1px solid #777;
+    }
+
+    div.gallery img {
+        width: 100%;
+        height: auto;
+    }
+
+    div.desc {
+        padding: 15px;
+        text-align: center;
+    }
+    </style>
+
+    <title>{{ title }}</title>
+</head>
+<body>
+<ul class="nav">
+    <li style="float: left"><a href="{{ url_for('users.index') }}">Home</a></li>
+    <li style="float: right"><a class="active" href="{{ url_for('users.login') }}">Log In</a></li>
+    <li style="float: right"><a class="active" href="{{ url_for('users.register') }}">Sign Up</a></li>
+</ul>
+<div>
+    <div>
+        <a  href="#">ECE1779</a>
     </div>
     <div>
-        {% for image in image_list %}
-            <div>
-                <div>
-                    <img src="../static/{{ image }}" >
-                </div>
-            </div>
-        {% endfor %}
+        <ul>
+            <li><a> {{ user_name }} </a></li>
+            <li><a href="{{ url_for('users.logout') }}"> Log out </a></li>
+        </ul>
+
     </div>
 
-{% endblock %}
+
+    <br>
+    <div id='photos'>
+        <div class="row">
+            {% for image in image_list %}
+                <div>
+                    <div class="gallery">
+                    <a href="../view/{{ title_list[loop.index-1][0] }}">
+                        <img src="../static/{{ image }}" >
+                    </a>
+                    <div class="desc">{{ title_list[loop.index-1][0] }}</div>
+                </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

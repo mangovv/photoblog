@@ -42,7 +42,7 @@ def login():
             # Log in the user
             login_user(user)
             flash('Logged in successfully.')
-            return redirect(url_for('view.welcome'))
+            return redirect(url_for('view.home_page'))
     return render_template('login.html', title=title,form=form)
 
 @users.route('/logout')
