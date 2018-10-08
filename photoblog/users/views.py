@@ -17,11 +17,7 @@ def index():
 
     return render_template('index.html',title = title)
 
-@users.route('/home_page')
-#welcome when log in successfully
-def welcome():
-    title = 'welcome'
-    return render_template('home_page.html',title = title)
+
 
 @users.route('/register', methods=['GET', 'POST'])
 def register():
@@ -60,7 +56,7 @@ def login():
             flash('Logged in successfully.')
 
 
-            return redirect(url_for('users.welcome'))
+            return redirect(url_for('view.welcome'))
     return render_template('login.html', title=title,form=form)
 
 @users.route('/logout')

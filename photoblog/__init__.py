@@ -39,12 +39,12 @@ login_manager.login_view = "users.login"
 #########################
 
 from photoblog.users.views import users
-from photoblog.core.views import core
+#from photoblog.core.views import core
 from photoblog.photos.upload import photos
 from photoblog.photos.view import display
 
 app.register_blueprint(users)
-app.register_blueprint(core)
+#app.register_blueprint(core)
 app.register_blueprint(photos)
 app.register_blueprint(display)
 

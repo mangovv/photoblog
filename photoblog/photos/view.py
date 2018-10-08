@@ -19,3 +19,9 @@ def view():
     url_list.append(b)
     url_list.append(c)
     return render_template("display.html", user_name=username_session, image_list=url_list)
+
+@display.route('/home_page')
+#welcome when log in successfully
+def welcome():
+    title = 'welcome'
+    return render_template('home_page.html',title = title)
