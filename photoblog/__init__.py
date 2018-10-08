@@ -38,7 +38,7 @@ login_manager.login_view = "users.login"
 #### BLUEPRINT CONFIGS #######
 #########################
 
-from photoblog.users.views import users
+from photoblog.users.user_util import users
 #from photoblog.core.views import core
 from photoblog.photos.upload import photos
 from photoblog.photos.view import display

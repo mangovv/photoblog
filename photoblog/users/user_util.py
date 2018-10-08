@@ -34,7 +34,7 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         # Grab the user from our User Models table
-        user = User.query.filter_by(email=form.email.data).first()
+        user = User.query.filter_by(username=form.username.data).first()
         # Check that the user was supplied and the password is right
         # The verify_password method comes from the User object
         # https://stackoverflow.com/questions/2209755/python-operation-vs-is-not

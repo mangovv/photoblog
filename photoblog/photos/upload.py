@@ -74,12 +74,11 @@ def transform_upload(destination0, destination1, destination2, destination3, des
     transformed3 = img.clone()
     transformed4 = img.clone()
 
+    transformed1.resize(1280,720)
+    transformed2.rotate(180)
+
     library.MagickSepiaToneImage.argtypes = [ctypes.c_void_p, ctypes.c_double]
     library.MagickSepiaToneImage.restype = None
-
-    transformed1.resize(1280,720)
-    transformed2.rotate(90)
-
     threshold = transformed3.quantum_range * 0.8
     library.MagickSepiaToneImage(transformed3.wand, threshold)
 
