@@ -39,50 +39,56 @@ def upload():
         filename1 = name+'_1'+ext
         filename2 = name+'_2'+ext
         filename3 = name+'_3'+ext
+        filename4 = name+'_4'+ext
         destination0 = target + filename0
         destination1 = target + filename1
         destination2 = target + filename2
         destination3 = target + filename3
+        destination4 = target + filename4
 
-        user = User(email='email@email.com',
-                    username='Anthony',
-                    password='892034zty')
+        # user = User(email=current_user.email,
+        #             username=current_user.username,
+        #             password=current_user.password_hash)
 
-        photo = Photo(user_id= 1,
-                      #date=Column(DateTime, default=datetime.datetime.utcnow),
+        photo = Photo(user_id= current_user.id,
                       title = name,
-                      scale_down = filename1,
-                      enlarge = filename2,
-                      black_white = filename3
+                      thumbnail = filename1,
+                      rotate = filename2,
+                      sepia = filename3,
+                      black_white = filename4
                       )
+
         db.session.add(photo)
         db.session.commit()
 
         with Image(file = new_file) as image:
             image.save(filename=destination0)
-            transform_upload(destination0,destination1,destination2,destination3)
+            transform_upload(destination0,destination1,destination2,destination3, destination4)
 
     return render_template("complete.html")
 
-def transform_upload(destination0, destination1, destination2, destination3):
+def transform_upload(destination0, destination1, destination2, destination3, destination4):
     img = Image(filename=destination0)
     transformed1 = img.clone()
     transformed2 = img.clone()
     transformed3 = img.clone()
+    transformed4 = img.clone()
 
     library.MagickSepiaToneImage.argtypes = [ctypes.c_void_p, ctypes.c_double]
     library.MagickSepiaToneImage.restype = None
 
-    transformed1.resize(50,50)
-    transformed2.type = 'grayscale'
-    #transformed3.rotate(270)
+    transformed1.resize(1280,720)
+    transformed2.rotate(90)
 
     threshold = transformed3.quantum_range * 0.8
     library.MagickSepiaToneImage(transformed3.wand, threshold)
 
+    transformed4.type = 'grayscale'
+
     transformed1.save(filename= destination1)
     transformed2.save(filename= destination2)
     transformed3.save(filename= destination3)
+    transformed4.save(filename= destination4)
 
 @photos.route('/display')
 @login_required

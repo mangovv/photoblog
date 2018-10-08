@@ -37,24 +37,22 @@ class Photo(db.Model):
     _tablename_='photo'
     # Setup the relationship to the User table
     users = db.relationship(User)
-
-    # Model for the Photos Store on the Website
-    id = db.Column(db.Integer, primary_key=True, autoincrement= True)
-    # Connect the Photo to a particular author
+    photo_id = db.Column(db.Integer, primary_key=True, autoincrement= True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     title = db.Column(db.String(140), nullable=False)
-    #3 different transformations
-    scale_down = db.Column(db.String(200), nullable=False)
-    enlarge = db.Column(db.String(200), nullable=False)
+    thumbnail = db.Column(db.String(200), nullable=False)
+    rotate = db.Column(db.String(200), nullable=False)
+    sepia = db.Column(db.String(200), nullable=False)
     black_white = db.Column(db.String(200), nullable=False)
 
 
-    def __init__(self, title, user_id, scale_down, enlarge, black_white):
+    def __init__(self, title, user_id, thumbnail, rotate, sepia, black_white):
         self.title = title
         self.user_id = user_id
-        self.scale_down = scale_down
-        self.enlarge = enlarge
+        self.thumbnail = thumbnail
+        self.rotate = rotate
+        self.sepia = sepia
         self.black_white = black_white
 
     def __repr__(self):
