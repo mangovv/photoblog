@@ -1,33 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>View</title>
-    <meta charset="utf-8">
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
 
-<div>
     <div>
-        <a  href="#">ECE1779</a>
-    </div>
-    <div>
-        <ul>
-            <li><a> {{ user_name }} </a></li>
-            <li><a href="{{ url_for('users.logout') }}"> Log out </a></li>
-        </ul>
+        <div>
+            <a  href="#">ECE1779</a>
+        </div>
+        <div>
+            <ul>
+                <li><a> {{ user_name }} </a></li>
+                <li><a href="{{ url_for('users.logout') }}"> Log out </a></li>
+            </ul>
 
+        </div>
     </div>
-</div>
 
 
-<div id='photos'>
-    <div class="row">
-        {% for image in image_list %}
-            <div>
-                <img src="../static/{{ image }}" style="width:500px;height:600px;">
-            </div>
-        {% endfor %}
+    <div id='photos'>
+        <div class="row">
+            {% for image in image_list %}
+                <div>
+                    <img src="../static/{{ image }}" style="width:500px;height:600px;">
+                </div>
+            {% endfor %}
+        </div>
     </div>
-</div>
-</body>
-</html>
+
+{% endblock %}

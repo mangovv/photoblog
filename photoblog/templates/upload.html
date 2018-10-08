@@ -1,10 +1,5 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>uploadForm</title>
-</head>
-
-<body>
+{% extends "base.html" %}
+{% block content %}
 <h1>uploadForm</h1>
 <form action="/test/FileUpload" enctype="multipart/form-data" method="post">
     User ID <input type="text" name="userID"><br/>
@@ -16,5 +11,5 @@
     <input type="reset">
 </form>
 
-</body>
-</html>
+
+{% endblock %}
