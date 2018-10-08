@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="./static/base.css">
+
     <meta charset="utf-8">
 
     <style>
@@ -26,10 +26,40 @@
         padding: 15px;
         text-align: center;
     }
+
+    ul.nav {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+
+    .nav li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+
+    .nav .active {
+        background-color: #4CAF50;
+    }
+
+    body {
+       background-image: url("../static/background.jpeg");
+       background-color: #cccccc;
+    }
+
     </style>
 
     <title>{{ title }}</title>
 </head>
+
+
 <body>
 <ul class="nav">
     <li style="float: left"><a href="{{ url_for('users.index') }}">Home</a></li>
@@ -51,27 +81,22 @@
 
     <br>
     <div id='photos'>
-        <div class="row">
-{#            {% for image in image_list %}#}
 
-            <div class="gallery">
-                <img src="../static/{{ image_list[0] }}" alt="Rotation" width="300" height="200">
-              <div class="desc">Rotation</div>
-            </div>
-{#                <div>#}
-{#                    <img src="../static/{{ image }}">#}
-{#                </div>#}
-{#            {% endfor %}#}
-            <div class="gallery">
-                <img src="../static/{{ image_list[1] }}" alt="Sepia" width="300" height="200">
-              <div class="desc">Sepia</div>
-            </div>
-
-            <div class="gallery">
-                <img src="../static/{{ image_list[2] }}" alt="Black and White" width="300" height="200">
-              <div class="desc">Black and White</div>
-            </div>
+        <div class="gallery">
+            <img src="../static/{{ image_list[0] }}" alt="Rotation" width="300" height="200">
+          <div class="desc">Rotation</div>
         </div>
+
+        <div class="gallery">
+            <img src="../static/{{ image_list[1] }}" alt="Sepia" width="300" height="200">
+          <div class="desc">Sepia</div>
+        </div>
+
+        <div class="gallery">
+            <img src="../static/{{ image_list[2] }}" alt="Black and White" width="300" height="200">
+          <div class="desc">Black and White</div>
+        </div>
+
     </div>
 </div>
 </body>

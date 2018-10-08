@@ -19,3 +19,8 @@ ul.nav {
 .nav .active {
     background-color: #4CAF50;
 }
+
+body {
+   background-image: url("../static/background.jpeg");
+   background-color: #cccccc;
+}

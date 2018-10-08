@@ -7,7 +7,6 @@ display = Blueprint('view',__name__)
 @display.route('/view/<title>')
 @login_required
 def view(title):
-    username_session=current_user.username
 
     url_list=[]
     a = Photo.query.filter_by(user_id=current_user.id).filter_by(title = title).with_entities(Photo.rotate).first()[0]
@@ -18,7 +17,7 @@ def view(title):
     url_list.append(b)
     url_list.append(c)
 
-    return render_template("display.html", user_name=username_session, image_list=url_list)
+    return render_template("display.html", user_name=current_user.username, image_list=url_list)
 
 @display.route('/home_page')
 @login_required
@@ -35,4 +34,4 @@ def home_page():
     for title in title_list:
         tit_list.append(title)
 
-    return render_template('home_page.html',title_list = tit_list, image_list=url_list)
+    return render_template('home_page.html', user_name=current_user.username ,title_list = tit_list, image_list=url_list)
