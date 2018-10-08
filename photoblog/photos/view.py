@@ -23,4 +23,8 @@ def view():
 #welcome when log in successfully
 def welcome():
     title = 'welcome'
-    return render_template('home_page.html',title = title)
+    url_list=[]
+    a = Photo.query.filter_by(user_id = current_user.id).with_entities(Photo.thumbnail).all()
+    for address in a:
+        url_list.append(address[0])
+    return render_template('home_page.html',title = title, image_list=url_list)

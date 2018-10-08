@@ -1,25 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <div>
-        <div>
-            <a  href="#">ECE1779</a>
-        </div>
-        <div>
-            <ul>
-                <li><a> {{ user_name }} </a></li>
-                <li><a href="{{ url_for('users.logout') }}"> Log out </a></li>
-            </ul>
 
-        </div>
+    <div>
+        <a  href="#">ECE1779</a>
+    </div>
+    <div>
+        <ul>
+            <li><a> {{ user_name }} </a></li>
+            <li><a href="{{ url_for('users.logout') }}"> Log out </a></li>
+        </ul>
+
     </div>
 
 
+    <br>
     <div id='photos'>
         <div class="row">
             {% for image in image_list %}
                 <div>
-                    <img src="../static/{{ image }}" style="width:500px;height:600px;">
+                    <img src="../static/{{ image }}">
                 </div>
             {% endfor %}
         </div>
