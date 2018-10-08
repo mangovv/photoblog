@@ -1,8 +1,9 @@
-from flask import render_template, request, Blueprint
+from flask import render_template, request, Blueprint, redirect, url_for
 from wand.image import Image
 from wand.api import library
 from photoblog import db
 from photoblog.models import User, Photo
+from werkzeug.security import generate_password_hash,check_password_hash
 
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -19,7 +20,7 @@ def test():
     return render_template("upload.html")
 
 @photos.route('/test/FileUpload',methods=["POST"])
-@login_required
+#@login_required
 def upload():
     target = os.path.join(APP_ROOT, "static\\")
     if not os.path.isdir(target):
@@ -30,6 +31,12 @@ def upload():
 
     if not request.files.getlist("uploadedfile"):
         return "File name is not provided"
+
+    username = request.form['userID']
+    user = User.query.filter_by(username=username).first()
+    if (not user.check_password(request.form['password'])) or (user is None):
+        return redirect(url_for('view.home_page'))
+
 
     for new_file in request.files.getlist("uploadedfile"):
 
@@ -50,7 +57,7 @@ def upload():
         #             username=current_user.username,
         #             password=current_user.password_hash)
 
-        photo = Photo(user_id= current_user.id,
+        photo = Photo(user_id= 1,
                       title = name,
                       thumbnail = filename1,
                       rotate = filename2,
