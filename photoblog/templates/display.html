@@ -6,53 +6,64 @@
     <meta charset="utf-8">
 
     <style>
-    div.gallery {
-        margin: 5px;
-        border: 1px solid #ccc;
-        float: left;
-        width: 180px;
-    }
+        div.custom-list {
+            float: left;
+            margin: 5px;
+            background-color: blanchedalmond;
+        }
 
-    div.gallery:hover {
-        border: 1px solid #777;
-    }
+        div.photos {
+            margin-left: auto;
+            margin-right: auto;
+            width: 8em
+        }
 
-    div.gallery img {
-        width: 100%;
-        height: auto;
-    }
+        div.gallery {
+            margin: 5px;
+            border: 1px solid #ccc;
+            float: left;
+            width: 180px;
+        }
 
-    div.desc {
-        padding: 15px;
-        text-align: center;
-    }
+        div.gallery:hover {
+            border: 1px solid #777;
+        }
 
-    ul.nav {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #333;
-    }
+        div.gallery img {
+            width: 100%;
+            height: auto;
+        }
 
+        div.desc {
+            padding: 15px;
+            text-align: center;
+            background-color: #CDC1C5;
+        }
 
-    .nav li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-    }
+        ul.nav {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
 
+        .nav li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
 
-    .nav .active {
-        background-color: #4CAF50;
-    }
+        .nav .active {
+            background-color: #4CAF50;
+        }
 
-    body {
-       background-image: url("../static/background.jpeg");
-       background-color: #cccccc;
-    }
+        body {
+            background-image: url("../static/background.jpeg");
+            background-color: #cccccc;
+        }
 
     </style>
 
@@ -63,14 +74,12 @@
 <body>
 <ul class="nav">
     <li style="float: left"><a href="{{ url_for('users.index') }}">Home</a></li>
-    <li style="float: right"><a class="active" href="{{ url_for('users.login') }}">Log In</a></li>
-    <li style="float: right"><a class="active" href="{{ url_for('users.register') }}">Sign Up</a></li>
+    <li style="float: right"><a class="active" href="{{ url_for('users.logout') }}">Log Out</a></li>
+    <li style="float: right"><a class="username" style="background-color: teal">{{ user_name }}</a></li>
 </ul>
 <div>
-    <div>
-        <a  href="#">ECE1779</a>
-    </div>
-    <div>
+
+    <div class="custom-list">
         <ul>
             <li><a> {{ user_name }} </a></li>
             <li><a href="{{ url_for('users.logout') }}"> Log out </a></li>
@@ -80,21 +89,21 @@
 
 
     <br>
-    <div id='photos'>
+    <div class="photos">
 
         <div class="gallery">
-            <img src="../static/{{ image_list[0] }}" alt="Rotation" width="300" height="200">
-          <div class="desc">Rotation</div>
+            <img src="../static/{{ image_list[0] }}" alt="Rotation">
+            <div class="desc">Rotation</div>
         </div>
 
         <div class="gallery">
-            <img src="../static/{{ image_list[1] }}" alt="Sepia" width="300" height="200">
-          <div class="desc">Sepia</div>
+            <img src="../static/{{ image_list[1] }}" alt="Sepia">
+            <div class="desc">Sepia</div>
         </div>
 
         <div class="gallery">
-            <img src="../static/{{ image_list[2] }}" alt="Black and White" width="300" height="200">
-          <div class="desc">Black and White</div>
+            <img src="../static/{{ image_list[2] }}" alt="Black and White">
+            <div class="desc">Black and White</div>
         </div>
 
     </div>

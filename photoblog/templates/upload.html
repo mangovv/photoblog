@@ -1,15 +1,38 @@
-{% extends "base.html" %}
-{% block content %}
-<h1>uploadForm</h1>
-<form action="/test/FileUpload" enctype="multipart/form-data" method="post">
-    User ID <input type="text" name="userID"><br/>
-    Password <input type="text" name="password"><br/>
+<!DOCTYPE html>
 
-    What is the image files to upload? <input type="file" name="uploadedfile"><br/>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="./static/base.css">
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <style>
+        .custom-form {
+            background-color: #CDC1C5;
+            text-align: center;
+            margin-top: 100px;
+            margin-bottom: 100px;
+            margin-left: 480px;
+            margin-right: 480px;
+        }
+    </style>
+</head>
+<body>
+<ul class="nav">
+    <li style="float: left"><a href="{{ url_for('view.home_page') }}">Home</a></li>
+    <li style="float: right"><a class="active" href="{{ url_for('users.login') }}">Log In</a></li>
+    <li style="float: right"><a class="active" href="{{ url_for('users.register') }}">Sign Up</a></li>
+</ul>
+<div class="custom-form">
+    <form action="/test/FileUpload" enctype="multipart/form-data" method="post">
+        User ID <input type="text" name="userID"><br/>
+        Password <input type="text" name="password"><br/>
 
-    <input type="submit" value="Send">
-    <input type="reset">
-</form>
+        What is the image files to upload? <br/>
+        <input type="file" name="uploadedfile"><br/>
 
-
-{% endblock %}
+        <input type="submit" value="Send">
+        <input type="reset">
+    </form>
+</div>
+</body>
+</html>

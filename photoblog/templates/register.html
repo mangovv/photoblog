@@ -1,6 +1,32 @@
-{% extends "base.html" %}
-{% block content %}
-    <form method="POST">
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="./static/base.css">
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <style>
+        .custom-form{
+            background-color: #CDC1C5;
+            text-align: center;
+            margin-top: 100px;
+            margin-bottom: 100px;
+            margin-left: 500px;
+            margin-right: 500px;
+        }
+    </style>
+
+</head>
+<body>
+<ul class="nav">
+    <li style="float: left"><a href="{{ url_for('view.home_page') }}">Home</a></li>
+    <li style="float: right"><a class="active" href="{{ url_for('users.login') }}">Log In</a></li>
+    <li style="float: right"><a class="active" href="{{ url_for('users.register') }}">Sign Up</a></li>
+</ul>
+
+<div class="custom-form">
+    {% block content %}
+        <form method="POST">
         {# This hidden_tag is a CSRF security feature. #}
         {{ form.hidden_tag() }}
         {{ form.email.label }} {{ form.email() }}<br>
@@ -8,5 +34,9 @@
         {{ form.password.label }} {{ form.password() }}<br>
         {{ form.pass_confirm.label }} {{ form.pass_confirm() }}<br>
         {{ form.submit() }}
-    </form>
-{% endblock %}
+        </form>
+    {% endblock %}
+</div>
+</body>
+</html>
+

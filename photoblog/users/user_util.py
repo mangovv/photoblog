@@ -2,15 +2,17 @@ from flask import render_template, url_for, flash, redirect, request, Blueprint
 from flask_login import login_user, current_user, logout_user, login_required, login_manager
 from photoblog import db
 from photoblog.models import User
-from photoblog.users.forms import LoginForm,RegistrationForm
+from photoblog.users.forms import LoginForm, RegistrationForm
 
 users = Blueprint('users', __name__)
 
+
 @users.route('/')
 def index():
-#This is the home page view.
+    # This is the home page view.
     title = "PhotoBLog"
-    return render_template('index.html',title = title)
+    return render_template('index.html', title=title)
+
 
 @users.route('/register', methods=['GET', 'POST'])
 def register():
@@ -25,7 +27,7 @@ def register():
         db.session.commit()
         flash('Thanks for registering! Now you can login!')
         return redirect(url_for('users.login'))
-    return render_template('register.html', title =title, form=form)
+    return render_template('register.html', title=title, form=form)
 
 
 @users.route('/login', methods=['GET', 'POST'])
@@ -43,13 +45,15 @@ def login():
             login_user(user)
             flash('Logged in successfully.')
             return redirect(url_for('view.home_page'))
-    return render_template('login.html', title=title,form=form)
+    return render_template('login.html', title=title, form=form)
+
 
 @users.route('/logout')
 @login_required
 def logout():
     logout_user()
-    return "Logged Out"
+    return render_template('logout.html')
+
 
 @users.route('/test', methods=['GET', 'POST'])
 @login_required

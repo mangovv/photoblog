@@ -1,8 +1,61 @@
-{% extends "base.html" %}
-{% block content %}
-<div>
-    <h1>Upload Completed</h1>
-</div>
+<!DOCTYPE html>
 
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <style>
 
-{% endblock %}
+        ul.nav {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .nav li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .nav .active {
+            background-color: #4CAF50;
+        }
+
+        body {
+            background-image: url("../static/background.jpeg");
+            background-color: #cccccc;
+        }
+    </style>
+
+</head>
+<body>
+
+<ul class="nav">
+    <li style="float: left"><a href="{{ url_for('users.index') }}">Home</a></li>
+    <li style="float: right"><a class="active" href="{{ url_for('users.logout') }}">Log Out</a></li>
+    <li style="float: right"><a class="username" style="background-color: teal">{{ user_name }}</a></li>
+</ul>
+<h1>
+    <style>
+        h1 {
+            background-color: powderblue;
+            color: blue;
+            text-align: center;
+            border: 3px solid green;
+            padding: 60px;
+            margin: 80px;
+            line-height: 1.6em
+        }
+
+    </style>
+    Upload Completed<br>
+
+</h1>
+
+</body>
+</html>
