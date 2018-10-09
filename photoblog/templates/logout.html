@@ -7,22 +7,27 @@
     <title>{{ title }}</title>
 </head>
 <body>
-    <h1>
-        <style>
-            h1 {
-                background-color: powderblue;
-                color: blue;
-                text-align: center;
-                border: 3px solid green;
-                padding: 60px;
-                margin: 80px;
-                line-height: 1.6em
-            }
+<ul class="nav">
+    <li style="float: left"><a href="{{ url_for('view.home_page') }}">Home</a></li>
+    <li style="float: right"><a class="active" href="{{ url_for('users.login') }}">Log In</a></li>
+    <li style="float: right"><a class="active" href="{{ url_for('users.register') }}">Sign Up</a></li>
+</ul>
+<h1>
+    <style>
+        h1 {
+            background-color: powderblue;
+            color: blue;
+            text-align: center;
+            border: 3px solid green;
+            padding: 60px;
+            margin: 80px;
+            line-height: 1.6em
+        }
 
-        </style>
-        Logged Out<br>
+    </style>
+    Logged Out<br>
 
-    </h1>
+</h1>
 
 </body>
 </html>

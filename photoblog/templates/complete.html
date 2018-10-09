@@ -36,9 +36,8 @@
 <body>
 
 <ul class="nav">
-    <li style="float: left"><a href="{{ url_for('users.index') }}">Home</a></li>
+    <li style="float: left"><a href="{{ url_for('view.home_page') }}">Home</a></li>
     <li style="float: right"><a class="active" href="{{ url_for('users.logout') }}">Log Out</a></li>
-    <li style="float: right"><a class="username" style="background-color: teal">{{ user_name }}</a></li>
 </ul>
 <h1>
     <style>
