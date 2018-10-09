@@ -17,16 +17,16 @@
         .nav .active {
             background-color: #4CAF50;
         }
-        .nav .username{
-            background-color: #b8d16c;
-        }
+        {#.nav .username{#}
+        {#    background-color: #b8d16c;#}
+        {#}#}
     </style>
 </head>
 <body>
 <ul class="nav">
     <li style="float: left"><a href="{{ url_for('view.home_page') }}">Home</a></li>
     <li style="float: right"><a class="active" href="{{ url_for('users.logout') }}">Log Out</a></li>
-
+    <li style="float: right"><a class="upload" href="{{ url_for('photos.test') }}">Upload</a></li>
 </ul>
 <div class="custom-form">
     <form action="/test/FileUpload" enctype="multipart/form-data" method="post">
