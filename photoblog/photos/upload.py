@@ -53,7 +53,7 @@ def upload():
         destination3 = target + filename3
         destination4 = target + filename4
 
-        photo = Photo(user_id=1,
+        photo = Photo(user_id=user.id,
                       title=name,
                       thumbnail=filename1,
                       rotate=filename2,
