@@ -42,6 +42,8 @@ from photoblog.users.user_util import users
 #from photoblog.core.views import core
 from photoblog.photos.upload import photos
 from photoblog.photos.view import display
+#db.create_all()
+
 
 app.register_blueprint(users)
 #app.register_blueprint(core)
