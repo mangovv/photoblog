@@ -55,6 +55,7 @@ def upload():
 
         photo = Photo(user_id=user.id,
                       title=name,
+                      original= filename0,
                       thumbnail=filename1,
                       rotate=filename2,
                       sepia=filename3,

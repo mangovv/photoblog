@@ -40,11 +40,14 @@ def login():
         # Check that the user was supplied and the password is right
         # The verify_password method comes from the User object
         # https://stackoverflow.com/questions/2209755/python-operation-vs-is-not
+        if user is None:
+            return render_template('login.html', title=title, form=form)
         if user.check_password(form.password.data) and user is not None:
             # Log in the user
             login_user(user)
             flash('Logged in successfully.')
             return redirect(url_for('view.home_page'))
+
     return render_template('login.html', title=title, form=form)
 
 

@@ -9,13 +9,15 @@ display = Blueprint('view',__name__)
 def view(title):
 
     url_list=[]
-    a = Photo.query.filter_by(user_id=current_user.id).filter_by(title = title).with_entities(Photo.rotate).first()[0]
-    b = Photo.query.filter_by(user_id=current_user.id).filter_by(title = title).with_entities(Photo.sepia).first()[0]
-    c = Photo.query.filter_by(user_id=current_user.id).filter_by(title = title).with_entities(Photo.black_white).first()[0]
+    a = Photo.query.filter_by(user_id=current_user.id).filter_by(title=title).with_entities(Photo.original).first()[0]
+    b = Photo.query.filter_by(user_id=current_user.id).filter_by(title = title).with_entities(Photo.rotate).first()[0]
+    c = Photo.query.filter_by(user_id=current_user.id).filter_by(title = title).with_entities(Photo.sepia).first()[0]
+    d = Photo.query.filter_by(user_id=current_user.id).filter_by(title = title).with_entities(Photo.black_white).first()[0]
 
     url_list.append(a)
     url_list.append(b)
     url_list.append(c)
+    url_list.append(d)
 
     return render_template("display.html", user_name=current_user.username, image_list=url_list)
 

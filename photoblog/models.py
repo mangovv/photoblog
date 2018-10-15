@@ -41,15 +41,17 @@ class Photo(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     title = db.Column(db.String(140), nullable=False)
+    original = db.Column(db.String(200), nullable=False)
     thumbnail = db.Column(db.String(200), nullable=False)
     rotate = db.Column(db.String(200), nullable=False)
     sepia = db.Column(db.String(200), nullable=False)
     black_white = db.Column(db.String(200), nullable=False)
 
 
-    def __init__(self, title, user_id, thumbnail, rotate, sepia, black_white):
+    def __init__(self, title, user_id, original, thumbnail, rotate, sepia, black_white):
         self.title = title
         self.user_id = user_id
+        self.original = original
         self.thumbnail = thumbnail
         self.rotate = rotate
         self.sepia = sepia
