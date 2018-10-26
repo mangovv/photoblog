@@ -44,9 +44,8 @@
             <div>
                 <div class="gallery">
                     <a href="../view/{{ title_list[loop.index-1][0] }}">
-                        <img src="../static/{{ image }}">
+                        <img src="{{ image }}">
                     </a>
-{#                    <div class="desc">{{ title_list[loop.index-1][0] }}</div>#}
                 </div>
             </div>
         {% endfor %}

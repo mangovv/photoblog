@@ -3,9 +3,8 @@ from wand.image import Image
 from wand.api import library
 from photoblog import db
 from photoblog.models import User, Photo
-from werkzeug.security import generate_password_hash, check_password_hash
-
-from flask_login import login_user, current_user, logout_user, login_required
+import boto3
+from flask_login import current_user, login_required
 
 import ctypes
 import os
@@ -65,14 +64,18 @@ def upload():
         db.session.add(photo)
         db.session.commit()
 
+        s3 = boto3.client('s3')
+
         with Image(file=new_file) as image:
             image.save(filename=destination0)
-            transform_upload(destination0, destination1, destination2, destination3, destination4)
+            s3.upload_file(destination0, 'ece1779-bucket-1', filename0)
+            transform_upload(destination0, destination1, destination2, destination3, destination4, filename1, filename2, filename3, filename4, s3)
+            os.remove(destination0)
 
     return render_template("complete.html")
 
 
-def transform_upload(destination0, destination1, destination2, destination3, destination4):
+def transform_upload(destination0, destination1, destination2, destination3, destination4, filename1, filename2, filename3, filename4, s3):
     img = Image(filename=destination0)
     transformed1 = img.clone()
     transformed2 = img.clone()
@@ -90,9 +93,21 @@ def transform_upload(destination0, destination1, destination2, destination3, des
     transformed4.type = 'grayscale'
 
     transformed1.save(filename=destination1)
+    s3.upload_file(destination1, 'ece1779-bucket-1', filename1)
+    os.remove(destination1)
+
     transformed2.save(filename=destination2)
+    s3.upload_file(destination2, 'ece1779-bucket-1', filename2)
+    os.remove(destination2)
+
     transformed3.save(filename=destination3)
+    s3.upload_file(destination3, 'ece1779-bucket-1', filename3)
+    os.remove(destination3)
+
     transformed4.save(filename=destination4)
+    s3.upload_file(destination4, 'ece1779-bucket-1', filename4)
+    os.remove(destination4)
+
 
 
 @photos.route('/display')
