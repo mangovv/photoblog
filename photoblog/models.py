@@ -61,6 +61,26 @@ class Photo(db.Model):
         return f"Post Id: {self.id} --- Date: {self.date} --- Title: {self.title}"
 
 
+class aws(db.Model):
+    _tablename_='aws'
+    aws_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    auto_flag = db.Column(db.Integer, nullable=False)
+    upper_threshold = db.Column(db.Float, nullable=False)
+    lower_threshold = db.Column(db.Float, nullable=False)
+    expand_ratio = db.Column(db.Integer, nullable=False)
+    shrink_ratio = db.Column(db.Integer, nullable=False)
+
+    def __init__(self, auto_flag, upper_threshold, lower_threshold, expand_ratio, shrink_ratio):
+        self.auto_flag = auto_flag
+        self.upper_threshold = upper_threshold
+        self.lower_threshold = lower_threshold
+        self.expand_ratio = expand_ratio
+        self.shrink_ratio = shrink_ratio
+
+    def __repr__(self):
+        return f"Id: {self.aws_id}"
+
+
 
 
 

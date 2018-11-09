@@ -15,7 +15,7 @@ app.config['SECRET_KEY'] = '123'
 #################################
 ### DATABASE SETUPS ############
 ###############################
-app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://root:ece1779pass@127.0.0.1:3306/ece1779'
+app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://root:ece1779pass@107.22.38.176:3306/ece1779'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 
@@ -42,7 +42,7 @@ from photoblog.users.user_util import users
 #from photoblog.core.views import core
 from photoblog.photos.upload import photos
 from photoblog.photos.view import display
-db.create_all()
+#db.create_all()
 
 
 app.register_blueprint(users)
