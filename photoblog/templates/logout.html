@@ -8,7 +8,7 @@
 </head>
 <body>
 <ul class="nav">
-    <li style="float: left"><a href="{{ url_for('view.home_page') }}">Home</a></li>
+    <li style="float: left"><a class="active" href="{{ url_for('view.home_page') }}">Home</a></li>
     <li style="float: right"><a class="active" href="{{ url_for('users.login') }}">Log In</a></li>
     <li style="float: right"><a class="active" href="{{ url_for('users.register') }}">Sign Up</a></li>
 </ul>
@@ -16,7 +16,7 @@
     <style>
         h1 {
             background-color: powderblue;
-            color: blue;
+
             text-align: center;
             border: 3px solid green;
             padding: 60px;

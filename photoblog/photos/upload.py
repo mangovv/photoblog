@@ -19,6 +19,59 @@ destination = ""
 def test():
     return render_template("upload.html")
 
+@photos.route('/FileUpload', methods=["POST"])
+@login_required
+def upload2():
+    target = os.path.join(APP_ROOT, "static/")
+    if not os.path.isdir(target):
+        os.mkdir(target)
+
+    if 'uploadedfile' not in request.files:
+        return render_template("filenameerror.html")
+
+    if not request.files.getlist("uploadedfile"):
+        return render_template("filenameerror.html")
+
+
+    for new_file in request.files.getlist("uploadedfile"):
+        name, ext = new_file.filename.split('.')
+        if ext != ('jpg' or 'jpeg' or 'png' or 'gif' or 'png' or 'tif'):
+            return render_template("typeerror.html")
+        ext = '.' + ext
+        filename0 = name + ext
+        filename1 = name + '_1' + ext
+        filename2 = name + '_2' + ext
+        filename3 = name + '_3' + ext
+        filename4 = name + '_4' + ext
+        destination0 = target + filename0
+        destination1 = target + filename1
+        destination2 = target + filename2
+        destination3 = target + filename3
+        destination4 = target + filename4
+
+        photo = Photo(user_id=current_user.id,
+                      title=name,
+                      original= filename0,
+                      thumbnail=filename1,
+                      rotate=filename2,
+                      sepia=filename3,
+                      black_white=filename4
+                      )
+
+        db.session.add(photo)
+        db.session.commit()
+
+        s3 = boto3.client('s3')
+
+        with Image(file=new_file) as image:
+            image.save(filename=destination0)
+            s3.upload_file(destination0, 'ece1779-bucket-1', filename0)
+            transform_upload(destination0, destination1, destination2, destination3, destination4, filename1, filename2, filename3, filename4, s3)
+            os.remove(destination0)
+
+    return render_template("complete.html")
+
+
 
 @photos.route('/test/FileUpload', methods=["POST"])
 # @login_required
@@ -40,6 +93,8 @@ def upload():
 
     for new_file in request.files.getlist("uploadedfile"):
         name, ext = new_file.filename.split('.')
+        if ext != ('jpg' or 'jpeg' or 'png' or 'gif' or 'png' or 'tif'):
+            return "file type not supported"
         ext = '.' + ext
         filename0 = name + ext
         filename1 = name + '_1' + ext

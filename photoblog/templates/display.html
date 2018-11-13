@@ -29,7 +29,7 @@
         div.desc {
             padding: 15px;
             text-align: center;
-            background-color: #CDC1C5;
+            background-color: powderblue;
         }
 
         ul.nav {
@@ -57,8 +57,8 @@
 
 
         body {
-            background-image: url("../static/background.jpeg");
-            background-color: #cccccc;
+
+            background-color: #3dabe2;
         }
 
     </style>
@@ -69,7 +69,7 @@
 
 <body>
 <ul class="nav">
-    <li style="float: left"><a href="{{ url_for('view.home_page') }}">Home</a></li>
+    <li style="float: left"><a class="active" href="{{ url_for('view.home_page') }}">Home</a></li>
     <li style="float: right"><a class="active" href="{{ url_for('users.logout') }}">Log Out</a></li>
     <li style="float: right"><a class="upload" href="{{ url_for('photos.test') }}">Upload</a></li>
     <li style="float: right"><a class="username" style="background-color: teal">{{ user_name }}</a></li>
